@@ -1,6 +1,7 @@
 // elements
 const levelName = document.querySelector(".level-name");
 const clickItems = document.querySelectorAll(".click-box");
+const resetButton = document.querySelector(".reset");
 
 // variables
 let level = 0;
@@ -13,11 +14,24 @@ function updateLevel() {
 function checkSquare() {}
 
 function setTreasure() {
-  const randomNumber = Math.floor(Math.random() * 9);
+  let randomNumber = generateNumber();
   console.log(randomNumber);
-  clickItems.forEach((i) => i.classList.add("hidden"));
+  clickItems.forEach((i) => {
+    i.classList.add("hidden");
+    i.classList.remove("treasure");
+    i.textContent = "X";
+  });
   clickItems[randomNumber].textContent = "T";
   clickItems[randomNumber].classList.add("treasure");
+}
+
+function reset() {
+  clickItems.forEach((i) => i.classList.add("hidden"));
+  setTreasure();
+}
+
+function generateNumber() {
+  return Math.floor(Math.random() * 9);
 }
 
 // event listeners
@@ -29,8 +43,8 @@ clickItems.forEach((i) => {
   });
 });
 
-setTreasure();
+resetButton.addEventListener("click", () => {
+  reset();
+});
 
-// add hidden class to all
-// gen random number and change that square to T
-// when user clicks on T, remove hidden class on T
+setTreasure();
