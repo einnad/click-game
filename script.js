@@ -13,15 +13,23 @@ function updateLevel() {
 function checkSquare() {}
 
 function setTreasure() {
-  const randomNumber = Math.floor(Math.random() * 9) + 1;
+  const randomNumber = Math.floor(Math.random() * 9);
   console.log(randomNumber);
   clickItems.forEach((i) => i.classList.add("hidden"));
   clickItems[randomNumber].textContent = "T";
+  clickItems[randomNumber].classList.add("treasure");
 }
 
-setTreasure();
-
 // event listeners
+clickItems.forEach((i) => {
+  i.addEventListener("click", () => {
+    if (i.classList.contains("treasure")) {
+      i.classList.remove("hidden");
+    }
+  });
+});
+
+setTreasure();
 
 // add hidden class to all
 // gen random number and change that square to T
