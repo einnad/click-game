@@ -1,6 +1,7 @@
 // elements
 const levelName = document.querySelector(".level-name");
 const clickItems = document.querySelectorAll(".click-box");
+const startButton = document.querySelector(".start");
 const resetButton = document.querySelector(".reset");
 
 // variables
@@ -8,14 +9,19 @@ let level = 0;
 levelName.textContent = `Level ${level}`;
 
 // event listeners
-clickItems.forEach((i) => {
-  i.addEventListener("click", () => {
-    if (i.classList.contains("treasure")) {
-      i.classList.remove("hidden");
-      level++;
-      levelName.textContent = `Level ${level}`;
-      setTreasure();
-    }
+startButton.addEventListener("click", function () {
+  setTreasure();
+  clickItems.forEach((i) => {
+    i.addEventListener("click", () => {
+      if (i.classList.contains("treasure")) {
+        i.classList.remove("hidden");
+        level++;
+        levelName.textContent = `Level ${level}`;
+        setTimeout(() => {
+          setTreasure();
+        }, 2000);
+      }
+    });
   });
 });
 
