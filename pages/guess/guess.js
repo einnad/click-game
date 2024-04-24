@@ -1,6 +1,7 @@
 // elements
 const chancesTag = document.querySelector(".chances");
 const userGuess = document.querySelector(".guess-input");
+const guessContainer = document.querySelector(".guess-container");
 const guessButton = document.querySelector(".guess-button");
 const resetButton = document.querySelector(".reset-button");
 
@@ -27,6 +28,10 @@ guessButton.addEventListener("click", function () {
       break;
     default:
       chancesTag.textContent = "Enter a valid number guess";
+  }
+
+  if (clicks === 4) {
+    guessContainer.classList.add("shake");
   }
 });
 
