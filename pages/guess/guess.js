@@ -8,7 +8,7 @@ const resetButton = document.querySelector(".reset-button");
 // variables
 let guess;
 let clicks = 0;
-let computerNumber = Math.floor(Math.random() * 100) + 1;
+let computerNumber = Math.floor(Math.random() * 50) + 1;
 
 // event listeners
 guessButton.addEventListener("click", function () {
@@ -34,7 +34,7 @@ guessButton.addEventListener("click", function () {
     case 4:
       guessContainer.classList.add("shake");
       break;
-    case 5:
+    case 8:
       guessContainer.classList.remove("shake");
       resetGame();
       chancesTag.textContent = "Ran out of chances. Starting over...";
@@ -46,7 +46,7 @@ resetButton.addEventListener("click", () => resetGame());
 
 // functions
 function resetGame() {
-  computerNumber = Math.floor(Math.random() * 100) + 1;
+  computerNumber = Math.floor(Math.random() * 50) + 1;
   clicks = 0;
   chancesTag.textContent = "Guess a number.";
 }

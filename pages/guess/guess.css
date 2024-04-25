@@ -1,5 +1,31 @@
 body {
   background-color: #cccccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 30px;
+}
+
+.guess-game {
+  border: 3px solid #212121;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.guess-button,
+.reset-button {
+  border: none;
+  background-color: #cccccc;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+button:hover {
+  color: #081fa3;
+  transform: rotate(-10deg);
 }
 
 /* shake class when chances low */

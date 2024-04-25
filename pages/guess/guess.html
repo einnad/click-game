@@ -4,16 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="guess.css" />
   </head>
   <body>
-    <h2>Guess the number between 1 and 100</h2>
-    <div class="guess-container">
-      <input class="guess-input" type="number" />
-      <button class="guess-button">Guess</button>
+    <div class="guess-game">
+      <h2>Guess the number between 1 and 50</h2>
+      <div class="guess-container">
+        <input class="guess-input" type="number" />
+        <button class="guess-button">Guess</button>
+      </div>
+      <p class="chances"></p>
+      <button class="reset-button">Reset</button>
     </div>
-    <p class="chances"></p>
-    <button class="reset-button">Reset</button>
     <script src="guess.js"></script>
   </body>
 </html>
