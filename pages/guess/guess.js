@@ -30,8 +30,15 @@ guessButton.addEventListener("click", function () {
       chancesTag.textContent = "Enter a valid number guess";
   }
 
-  if (clicks === 4) {
-    guessContainer.classList.add("shake");
+  switch (clicks) {
+    case 4:
+      guessContainer.classList.add("shake");
+      break;
+    case 5:
+      guessContainer.classList.remove("shake");
+      resetGame();
+      chancesTag.textContent = "Ran out of chances. Starting over...";
+      break;
   }
 });
 
@@ -40,4 +47,6 @@ resetButton.addEventListener("click", () => resetGame());
 // functions
 function resetGame() {
   computerNumber = Math.floor(Math.random() * 100) + 1;
+  clicks = 0;
+  chancesTag.textContent = "Guess a number.";
 }

@@ -1,3 +1,7 @@
+body {
+  background-color: #cccccc;
+}
+
 /* shake class when chances low */
 .shake {
   animation: shake 0.35s infinite;
