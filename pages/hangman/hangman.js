@@ -21,9 +21,11 @@ let guessDisplay;
 let chosenWord;
 let rand;
 let userGuess;
+let guessBank = "";
 
 // events
 startButton.addEventListener("click", () => {
+  userInput.value = "";
   rand = Math.floor(Math.random() * wordsLength);
   chosenWord = wordBank[rand];
   console.log(chosenWord);
@@ -33,12 +35,19 @@ startButton.addEventListener("click", () => {
 
 guessButton.addEventListener("click", () => {
   userGuess = userInput.value;
+  userInput.value = "";
   checkUserChoice(userGuess);
 });
 
 // functions
 function checkUserChoice(userGuess) {
   if (chosenWord.includes(userGuess)) {
-    console.log("Guess correct");
+    for (let i = 0; i < chosenWord.length; i++) {
+      if (chosenWord[i] == userGuess) {
+        guessDisplay[i] = userGuess;
+      }
+    }
+    guessDiv.textContent = guessDisplay;
+    guessBank += userGuess;
   }
 }
