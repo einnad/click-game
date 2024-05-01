@@ -4,6 +4,7 @@ const guessButton = document.querySelector(".guess-button");
 
 const guessDiv = document.querySelector(".word-guess");
 const userInput = document.querySelector(".user-input");
+const stageImg = document.querySelector(".stage-img");
 
 // variables
 const wordBank = [
@@ -22,9 +23,11 @@ let chosenWord;
 let rand;
 let userGuess;
 let guessBank = "";
+let livesLost = 0;
 
 // events
 startButton.addEventListener("click", () => {
+  livesLost = 0;
   userInput.value = "";
   rand = Math.floor(Math.random() * wordsLength);
   chosenWord = wordBank[rand];
@@ -49,5 +52,8 @@ function checkUserChoice(userGuess) {
     }
     guessDiv.textContent = guessDisplay;
     guessBank += userGuess;
+  } else {
+    livesLost++;
+    stageImg.src = `../img/stage${livesLost}.png`;
   }
 }
