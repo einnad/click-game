@@ -24,6 +24,13 @@ function checkHand(hand) {
 }
 
 dealButton.addEventListener("click", function () {
+  playerCards = [];
+  compCards = [];
+
+  playerHand.textContent = playerCards;
+  compHand.textContent = compCards;
+  comment.textContent = "Game in progress...";
+
   playerCards.push(selectCard());
   playerCards.push(selectCard());
 
@@ -34,7 +41,7 @@ dealButton.addEventListener("click", function () {
     comment.textContent = "Blackjack!";
   }
 
-  while (checkHand(compCards) < 17) {
+  if (checkHand(compCards) < 17) {
     compCards.push(selectCard());
   }
 
@@ -47,20 +54,43 @@ dealButton.addEventListener("click", function () {
 
 hitButton.addEventListener("click", function () {
   playerCards.push(selectCard());
-  playerHand.textContent = playerCards;
-  if (checkHand(playerCards) > 21) {
+  let playerTotal = checkHand(playerCards);
+
+  //  check card for ace
+  if (playerCards[2] == 11 && playerTotal > 21) {
+    // check 21 diff
+    print("Card change to 1");
+    playerTotal -= 11;
+    playerCards[2] = 1;
+  }
+
+  if (playerTotal > 21) {
     comment.textContent = "Bust!";
-  } else if (checkHand(playerCards) == 21) {
+  } else if (playerTotal == 21) {
     comment.textContent = "Blackjack!";
   }
 
-  //  check card for ace
-  if (playerCards[2] == 11) {
-    // check 21 diff
-  }
+  playerHand.textContent = playerCards;
 });
 
 standButton.addEventListener("click", function () {
   //  check player vs comp cards
+  let playerTotal = checkHand(playerCards);
+
+  let choice = Math.floor(Math.random() * 2); // 0 hit 1 stand
+  if (choice === 0) {
+    compCards.push(selectCard());
+  }
+  let compTotal = checkHand(compCards);
+
   //  if no bust or blackjack, highest wins
+  if (playerTotal > 21) {
+    comment.textContent = "Bust!";
+  } else if (compTotal > 21 || playerTotal > compTotal) {
+    comment.textContent = "You win";
+  } else {
+    comment.textContent = "You lose";
+  }
+  playerHand.textContent = playerCards;
+  compHand.textContent = compCards;
 });
