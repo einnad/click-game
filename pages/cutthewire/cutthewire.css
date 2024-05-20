@@ -1,0 +1,44 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #b8b9ba;
+}
+
+h1 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.wire {
+  height: 5px;
+  width: 300px;
+  cursor: pointer;
+}
+
+.red {
+  background-color: #eb0712;
+}
+
+.blue {
+  background-color: #070beb;
+}
+
+.green {
+  background-color: #07eb3c;
+}
+
+.yellow {
+  background-color: #e7eb07;
+}
+
+.pink {
+  background-color: #eb07e3;
+}
+
+.wires-box {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
